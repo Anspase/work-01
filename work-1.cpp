@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
@@ -14,9 +14,6 @@ struct Zvychka {
 const string RESET = "\033[0m";
 const string RED = "\033[31m";
 const string GREEN = "\033[32m";
-const string YELLOW = "\033[33m";
-const string BLUE = "\033[34m";
-const string MAGENTA = "\033[35m";
 const string CYAN = "\033[36m";
 const string WHITE = "\033[37m";
 
@@ -24,11 +21,11 @@ void dodatiZvychku(vector<Zvychka>& zvychki) {
     setlocale(LC_CTYPE, "ukr");
     setlocale(LC_ALL, "");
     Zvychka novaZvychka;
-    cout << YELLOW << "Введіть назву звички: " << RESET;
+    cout << "Введіть назву звички: " << RESET;
     getline(cin, novaZvychka.nazva);
-    cout << YELLOW << "Введіть опис звички: " << RESET;
+    cout << "Введіть опис звички: " << RESET;
     getline(cin, novaZvychka.opis);
-    cout << YELLOW << "Введіть частоту звички (щодня, щотижня, щомісяця): " << RESET;
+    cout << "Введіть частоту звички (щодня, щотижня, щомісяця): " << RESET;
     getline(cin, novaZvychka.chastota);
     novaZvychka.vikonanaSyohodni = false;
 
@@ -45,12 +42,12 @@ void poznachitiZvychkuYakVikonanu(vector<Zvychka>& zvychki) {
         cout << RED << "Список звичок порожній.\n" << RESET;
         return;
     }
-    cout << "\n" << BLUE << "Список звичок:\n" << RESET;
+    cout << "\nСписок звичок:\n";
     for (size_t i = 0; i < zvychki.size(); i++) {
         cout << i + 1 << ". " << zvychki[i].nazva << " (" << zvychki[i].chastota << ")\n";
     }
     int indexZvychki;
-    cout << YELLOW << "Введіть номер звички, яку потрібно позначити як виконану: " << RESET;
+    cout << "Введіть номер звички, яку потрібно позначити як виконану: " << RESET;
     cin >> indexZvychki;
     cin.ignore();
 
@@ -70,11 +67,11 @@ void pokazatiProgres(const vector<Zvychka>& zvychki) {
         return;
     }
 
-    cout << BLUE << "\n+--------------------------------------------+\n";
+    cout << "\n+--------------------------------------------+\n";
     cout << "|               Прогрес звичок               |\n";
     cout << "+--------------------------------------------+\n";
     cout << "| Назва       | Частота      | Статус        |\n";
-    cout << "+--------------------------------------------+\n" << RESET;
+    cout << "+--------------------------------------------+\n";
 
     for (const auto& zvychka : zvychki) {
         cout << "| " << zvychka.nazva << " | "
@@ -135,14 +132,14 @@ void zavantizhitiZvychki(vector<Zvychka>& zvychki) {
 void pokazatiMenu() {
     setlocale(LC_CTYPE, "ukr");
     setlocale(LC_ALL, "");
-    cout << "\n" << MAGENTA << "===== Календар Звичок =====\n" << RESET;
+    cout << "\n" << CYAN << "===== Календар Звичок =====\n" << RESET;
     cout << CYAN << "1. Додати Звичку\n" << RESET;
     cout << CYAN << "2. Позначити Звичку як Виконану\n" << RESET;
     cout << CYAN << "3. Показати Прогрес\n" << RESET;
     cout << CYAN << "4. Зберегти Дані\n" << RESET;
     cout << CYAN << "5. Завантажити Дані\n" << RESET;
     cout << CYAN << "6. Вихід\n" << RESET;
-    cout << YELLOW << "Введіть ваш вибір: " << RESET;
+    cout << "Введіть ваш вибір: " << RESET;
 }
 
 int main() {
